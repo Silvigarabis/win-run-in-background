@@ -25,6 +25,6 @@ jobs:
           cl /EHsc /Fe:your_program.exe your_program.c
 
       - name: Save Result
-        uses: actions/actions/upload-artifact@v4.6.0
+        uses: actions/upload-artifact@v4.6.0
         with:
           path: your_program.exe
