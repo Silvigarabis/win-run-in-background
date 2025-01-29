@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  build_x64:
     runs-on: windows-latest
 
     steps:
@@ -15,6 +15,29 @@ jobs:
       
       - name: Install MinGW 12.2.0
         uses: deevroman/setup-mingw@0.0.1
+        with:
+          platform: x64
+
+      - name: Compile C Program
+        run: |
+          gcc -o run-in-background.exe run-in-background.c
+
+      - name: Save Result
+        uses: actions/upload-artifact@v4.6.0
+        with:
+          name: program-x64
+          path: run-in-background.exe
+  build_x86:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      
+      - name: Install MinGW 12.2.0
+        uses: deevroman/setup-mingw@0.0.1
+        with:
+          platform: x86
 
       - name: Compile C Program
         run: |
