@@ -88,11 +88,11 @@ int main(int argc, char *argv[]) {
     printf("Process started successfully.\n");
 
     // 等待进程结束
-    //WaitForSingleObject(pi.hProcess, INFINITE);
+    WaitForSingleObject(pi.hProcess, INFINITE);
 
     // 关闭进程和线程句柄
-    //CloseHandle(pi.hProcess);
-    //CloseHandle(pi.hThread);
+    CloseHandle(pi.hProcess);
+    CloseHandle(pi.hThread);
 
     return 0;
 }
