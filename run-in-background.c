@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
     ZeroMemory(&si, sizeof(si));
     si.cb = sizeof(si);
     si.dwFlags = STARTF_USESHOWWINDOW;
-    si.wShowWindow = SW_HIDE;  // 隐藏窗口
+    si.wShowWindow = SW_SHOWNORMAL;  // 隐藏窗口
 
     ZeroMemory(&pi, sizeof(pi));
 
@@ -88,11 +88,11 @@ int main(int argc, char *argv[]) {
     printf("Process started successfully.\n");
 
     // 等待进程结束
-    WaitForSingleObject(pi.hProcess, INFINITE);
+    //WaitForSingleObject(pi.hProcess, INFINITE);
 
     // 关闭进程和线程句柄
-    CloseHandle(pi.hProcess);
-    CloseHandle(pi.hThread);
+    //CloseHandle(pi.hProcess);
+    //CloseHandle(pi.hThread);
 
     return 0;
 }
