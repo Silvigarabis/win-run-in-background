@@ -19,17 +19,17 @@ void escape_quotes(const char *src, char *dest) {
 }
 
 // 函数：构建命令行字符串
-void build_command_line(char *commandLine, const char *exePath, char *argv[], int argc) {
+void build_command_line(char *commandLine, char *argv[], int argc) {
     char escapedExePath[MAX_PATH];
-    escape_quotes(exePath, escapedExePath);
+    escape_quotes(argv[1], escapedExePath);
     
     // 拼接可执行文件路径
     strcpy(commandLine, "\"");
     strcat(commandLine, escapedExePath);
     strcat(commandLine, "\"");
 
-    // 拼接每个参数
-    for (int i = 1; i < argc; i++) {
+    if (argc > 2)  // 拼接每个参数
+    for (int i = 2; i < argc; i++) {
         strcat(commandLine, " ");
         char escapedArg[1024];
         escape_quotes(argv[i], escapedArg);
@@ -48,10 +48,11 @@ int main(int argc, char *argv[]) {
     FreeConsole();  // 释放当前进程的控制台窗口
     //MessageBox(NULL, "窗口已隐藏", "提示", MB_OK);
 
+    // 注意这里，命令长度只能到1024
     char commandLine[1024] = {0};
 
     // 构建命令行
-    build_command_line(commandLine, argv[1], argv, argc);
+    build_command_line(commandLine, argv, argc);
 
     // 输出拼接后的命令行
     printf("Command: %s\n", commandLine);
