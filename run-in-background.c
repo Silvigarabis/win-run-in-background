@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    //FreeConsole();  // 释放当前进程的控制台窗口
+    FreeConsole();  // 释放当前进程的控制台窗口
     //MessageBox(NULL, "窗口已隐藏", "提示", MB_OK);
 
     // 注意这里，命令长度只能到1024
@@ -91,8 +91,8 @@ int main(int argc, char *argv[]) {
     //WaitForSingleObject(pi.hProcess, INFINITE);
 
     // 关闭进程和线程句柄
-    CloseHandle(pi.hProcess);
-    CloseHandle(pi.hThread);
+    //CloseHandle(pi.hProcess);
+    //CloseHandle(pi.hThread);
 
     return 0;
 }
