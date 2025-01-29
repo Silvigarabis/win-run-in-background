@@ -2,6 +2,8 @@ name: Build C Program with MSVC
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
 
 jobs:
   build:
@@ -11,16 +13,16 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
 
-      - name: Set up Visual Studio Build Tools
-        uses: microsoft/setup-msbuild@v1.0.2
+      - name: Set up MinGW
+        uses: egor-tensin/setup-mingw@v2
         with:
-          vs-version: 'latest'
+          platform: x64
 
-      - name: Compile C Program with cl.exe
+      - name: Compile C Program
         run: |
-          cl /EHsc /Fe:your_program.exe your_program.c
+          gcc -o run-in-background.exe run-in-background.c
 
       - name: Save Result
         uses: actions/upload-artifact@v4.6.0
         with:
-          path: your_program.exe
+          path: run-in-background.exe
