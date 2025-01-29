@@ -45,7 +45,8 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    char commandLine[1024] = {0};
+    FreeConsole();  // 释放当前进程的控制台窗口
+    MessageBox(NULL, "窗口已隐藏", "提示", MB_OK);    char commandLine[1024] = {0};
 
     // 构建命令行
     build_command_line(commandLine, argv[1], argv, argc);
