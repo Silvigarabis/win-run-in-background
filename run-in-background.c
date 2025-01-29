@@ -46,7 +46,9 @@ int main(int argc, char *argv[]) {
     }
 
     FreeConsole();  // 释放当前进程的控制台窗口
-    MessageBox(NULL, "窗口已隐藏", "提示", MB_OK);    char commandLine[1024] = {0};
+    //MessageBox(NULL, "窗口已隐藏", "提示", MB_OK);
+
+    char commandLine[1024] = {0};
 
     // 构建命令行
     build_command_line(commandLine, argv[1], argv, argc);
@@ -85,7 +87,7 @@ int main(int argc, char *argv[]) {
     printf("Process started successfully.\n");
 
     // 等待进程结束
-    WaitForSingleObject(pi.hProcess, INFINITE);
+    //WaitForSingleObject(pi.hProcess, INFINITE);
 
     // 关闭进程和线程句柄
     CloseHandle(pi.hProcess);
